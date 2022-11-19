@@ -6,11 +6,36 @@
   font-family: 'Kumbh Sans', sans-serif;
 }
 
-/*INTRO STYLES*/
+/*TRANSITION ANIMATIONS - 0.5s*/
+@keyframes introIn{
+  0%{
+    opacity: 0;
+    transform: translate(0px, 20px);
+  }
+  100%{
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes introOut{
+  0%{
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+  100%{
+    opacity: 0;
+    transform: translate(0px, 10px);
+  }
+}
+
 body {
+  animation: introIn 1s;
   background-color: #131313;
 }
 
+
+/*INTRO STYLES*/
 @keyframes text{
   0%{
     opacity: 0;
@@ -26,9 +51,11 @@ body {
   position: absolute;
   top: 40%;
   width: 100%;
-
-  color: white;
   font-weight: 700;
+
+  animation: introOut 1s; 
+  animation-fill-mode: forwards;
+  animation-delay: 4s; /*see intro.html for timing*/
 }
 
 .container span{
@@ -39,17 +66,34 @@ body {
   opacity: 0;
   font-size: 10rem;
 
-  animation: text 3s;
+  background-color: #ff8177;
+  background-image: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  
+  animation: text 1.5s;
   animation-fill-mode: forwards;
+  animation-delay: 1s;
 }
 
 .text2{
   opacity: 0;
   font-size: 4rem;
 
-  animation: text 3s;
+  background-color: #ff8177;
+  background-image: linear-gradient(20deg, #b721ff 0%, #21d4fd 100%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  
+  animation: text 1.5s;
   animation-fill-mode: forwards;
-  animation-delay: 1s;
+  animation-delay: 1.5s;
 }
 
 /*WEB STYLES*/
@@ -78,25 +122,6 @@ body {
   padding-left: 50px;
 }
 
-#navbar__logo {
-  background-color: #ff8177;
-  background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 2rem;
-}
-
-.fa-gem {
-  margin-right: 0.5rem;
-}
-
 .navbar__menu {
   display: flex;
   align-items: center;
@@ -116,34 +141,6 @@ body {
   text-decoration: none;
   padding: 0 1rem;
   height: 100%;
-}
-
-.navbar__btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 1rem;
-  width: 100%;
-}
-
-.button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  padding: 10px 20px;
-  height: 100%;
-  width: 100%;
-  border: none;
-  outline: none;
-  border-radius: 4px;
-  background: #f77062;
-  color: #fff;
-}
-
-.button:hover {
-  background: #4837ff;
-  transition: all 0.3s ease;
 }
 
 .navbar__links:hover {
@@ -175,18 +172,14 @@ body {
     z-index: -1;
   }
 
+  /*active - whenever something is clicked*/
   .navbar__menu.active {
     background: #131313;
     top: 100%;
-    opacity: 1;
-    transition: all 0.5s ease;
+    opacity: 0;
     z-index: 99;
     height: 50vh;
-    font-size: 1.6rem;
-  }
-
-  #navbar__logo {
-    padding-left: 25px;
+    font-size: 10rem;
   }
 
   .navbar__toggle .bar {
@@ -206,19 +199,6 @@ body {
     padding: 2rem;
     width: 100%;
     display: table;
-  }
-
-  .navbar__btn {
-    padding-bottom: 2rem;
-  }
-
-  .button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    height: 80px;
-    margin: 0;
   }
 
   #mobile-menu {
@@ -411,26 +391,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
-
-.services h1 {
-  background-color: #ff8177;
-  background-image: linear-gradient(
-    to right,
-    #ff8177 0%,
-    #ff867a 0%,
-    #ff8c7f 21%,
-    #f99185 52%,
-    #cf556c 78%,
-    #b12a5b 100%
-  );
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-  margin-bottom: 5rem;
-  font-size: 2.5rem;
 }
 
 .services__container {
